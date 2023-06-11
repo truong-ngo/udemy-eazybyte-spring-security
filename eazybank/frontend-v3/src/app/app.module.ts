@@ -1,54 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER,NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { NoticesComponent } from './components/notices/notices.component';
 import { AccountComponent } from './components/account/account.component';
 import { BalanceComponent } from './components/balance/balance.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { CardsComponent } from './components/cards/cards.component';
-import { AuthActivateRouteGuard } from './routeguards/auth.routeguard';
-import { HomeComponent } from './components/home/home.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { LogoutComponent } from './components/logout/logout.component';
 
-function initializeKeyCloak(keycloak: KeycloakService) {
-  return () => {
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
     keycloak.init({
       config: {
-        url: "http://localhost:9999/",
-        realm: "eazybankdev",
-        clientId: "eazybankangular"
+        url: 'http://localhost:9999/',
+        realm: 'eazybankdev',
+        clientId: 'eazybankangular',
       },
       initOptions: {
-        pkceMethod: "S256",
-        redirectUri: "http://localhost:4200/dashboard"
-      }, 
-      loadUserProfileAtStartUp: false
-    })
-  }
+        pkceMethod: 'S256',
+        redirectUri: 'http://localhost:4200/dashboard',
+      },loadUserProfileAtStartUp: false
+    });
 }
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     ContactComponent,
     LoginComponent,
     DashboardComponent,
-    LogoutComponent,
     NoticesComponent,
     AccountComponent,
     BalanceComponent,
     LoansComponent,
     CardsComponent,
-    HomeComponent
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -64,11 +61,10 @@ function initializeKeyCloak(keycloak: KeycloakService) {
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: initializeKeyCloak,
+      useFactory: initializeKeycloak,
       multi: true,
-      deps: [KeycloakService]
-    },
-    AuthActivateRouteGuard
+      deps: [KeycloakService],
+    }
   ],
   bootstrap: [AppComponent]
 })

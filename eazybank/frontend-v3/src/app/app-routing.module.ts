@@ -10,7 +10,7 @@ import { NoticesComponent } from './components/notices/notices.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthKeycloakGuard } from './routeguards/auth.keycloakguard';
+import { AuthKeyClockGuard } from './routeguards/auth.keycloakguard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,18 +18,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'notices', component: NoticesComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthKeycloakGuard], data: {
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthKeyClockGuard], data: {
 
   }},
   { path: 'logout', component: LogoutComponent},
-  { path: 'myAccount', component: AccountComponent, data: {
+  { path: 'myAccount', component: AccountComponent, canActivate: [AuthKeyClockGuard], data: {
     roles: ["USER"]
   }},
-  { path: 'myBalance', component: BalanceComponent, canActivate: [AuthKeycloakGuard], data: {
+  { path: 'myBalance', component: BalanceComponent, canActivate: [AuthKeyClockGuard], data: {
     roles: ["USER", "ADMIN"]
   }},
-  { path: 'myLoans', component: LoansComponent, canActivate: [AuthKeycloakGuard], data: {}},
-  { path: 'myCards', component: CardsComponent, canActivate: [AuthKeycloakGuard], data: {
+  { path: 'myLoans', component: LoansComponent, canActivate: [AuthKeyClockGuard], data: {}},
+  { path: 'myCards', component: CardsComponent, canActivate: [AuthKeyClockGuard], data: {
     roles: ["USER"]
   }}
 ];
