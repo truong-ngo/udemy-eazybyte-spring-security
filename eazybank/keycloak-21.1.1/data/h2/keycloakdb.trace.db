@@ -152,3 +152,568 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at io.quarkus.runtime.Application.stop(Application.java:208)
 	at io.quarkus.runtime.Application.stop(Application.java:155)
 	at io.quarkus.runtime.ApplicationLifecycleManager$ShutdownHookThread.run(ApplicationLifecycleManager.java:431)
+2023-07-10 11:29:34 database: CREATE CACHED TABLE "PUBLIC"."CLIENT_SCOPE_ROLE_MAPPING"(
+    "SCOPE_ID" CHARACTER VARYING(36) NOT NULL,
+    "ROLE_ID" CHARACTER VARYING(36) NOT NULL
+)
+org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db"; SQL statement:
+CREATE CACHED TABLE "PUBLIC"."CLIENT_SCOPE_ROLE_MAPPING"(
+    "SCOPE_ID" CHARACTER VARYING(36) NOT NULL,
+    "ROLE_ID" CHARACTER VARYING(36) NOT NULL
+) [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.createTable(Store.java:223)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:112)
+	at org.h2.engine.MetaRecord.prepareAndExecute(MetaRecord.java:77)
+	at org.h2.engine.Database.executeMeta(Database.java:660)
+	at org.h2.engine.Database.executeMeta(Database.java:634)
+	at org.h2.engine.Database.<init>(Database.java:357)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.mvstore.MVStoreException: Reading from file sun.nio.ch.FileChannelImpl@22a2d4c2 failed at 780575 (length -1), read 0, remaining 192 [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:470)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.Chunk.readBufferForPage(Chunk.java:422)
+	at org.h2.mvstore.MVStore.readPage(MVStore.java:2569)
+	at org.h2.mvstore.MVMap.readPage(MVMap.java:633)
+	at org.h2.mvstore.MVMap.readOrCreateRootPage(MVMap.java:658)
+	at org.h2.mvstore.MVMap.setRootPos(MVMap.java:643)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:702)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:648)
+	at org.h2.mvstore.tx.TransactionStore.openMap(TransactionStore.java:564)
+	at org.h2.mvstore.tx.TransactionStore.openVersionedMap(TransactionStore.java:550)
+	at org.h2.mvstore.tx.Transaction.openMap(Transaction.java:456)
+	at org.h2.mvstore.db.MVPrimaryIndex.<init>(MVPrimaryIndex.java:53)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:156)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	... 20 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.readInternal(FileChannelImpl.java:844)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:821)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	... 34 more
+2023-07-10 11:29:35 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.createTable(Store.java:223)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:112)
+	at org.h2.engine.MetaRecord.prepareAndExecute(MetaRecord.java:77)
+	at org.h2.engine.Database.executeMeta(Database.java:660)
+	at org.h2.engine.Database.executeMeta(Database.java:634)
+	at org.h2.engine.Database.<init>(Database.java:357)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db"; SQL statement:
+CREATE CACHED TABLE "PUBLIC"."CLIENT_SCOPE_ROLE_MAPPING"(
+    "SCOPE_ID" CHARACTER VARYING(36) NOT NULL,
+    "ROLE_ID" CHARACTER VARYING(36) NOT NULL
+) [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: Reading from file sun.nio.ch.FileChannelImpl@22a2d4c2 failed at 780575 (length -1), read 0, remaining 192 [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:470)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.Chunk.readBufferForPage(Chunk.java:422)
+	at org.h2.mvstore.MVStore.readPage(MVStore.java:2569)
+	at org.h2.mvstore.MVMap.readPage(MVMap.java:633)
+	at org.h2.mvstore.MVMap.readOrCreateRootPage(MVMap.java:658)
+	at org.h2.mvstore.MVMap.setRootPos(MVMap.java:643)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:702)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:648)
+	at org.h2.mvstore.tx.TransactionStore.openMap(TransactionStore.java:564)
+	at org.h2.mvstore.tx.TransactionStore.openVersionedMap(TransactionStore.java:550)
+	at org.h2.mvstore.tx.Transaction.openMap(Transaction.java:456)
+	at org.h2.mvstore.db.MVPrimaryIndex.<init>(MVPrimaryIndex.java:53)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:156)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	... 20 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.readInternal(FileChannelImpl.java:844)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:821)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	... 34 more
+2023-07-10 11:29:37 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.store.FileLock.getExceptionFatal(FileLock.java:429)
+	at org.h2.store.FileLock.sleep(FileLock.java:424)
+	at org.h2.store.FileLock.lockFile(FileLock.java:334)
+	at org.h2.store.FileLock.lock(FileLock.java:110)
+	at org.h2.engine.Database.<init>(Database.java:315)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:504)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 20 more
+Caused by: java.lang.InterruptedException: sleep interrupted
+	at java.base/java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock.sleep(FileLock.java:422)
+	... 17 more
+2023-07-10 11:29:46 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.createTable(Store.java:223)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.engine.Database.<init>(Database.java:351)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: Reading from file sun.nio.ch.FileChannelImpl@b2be421 failed at 698216 (length -1), read 1024, remaining 0 [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:470)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.Chunk.readBufferForPage(Chunk.java:422)
+	at org.h2.mvstore.MVStore.readPage(MVStore.java:2569)
+	at org.h2.mvstore.MVMap.readPage(MVMap.java:633)
+	at org.h2.mvstore.Page$NonLeaf.getChildPage(Page.java:1125)
+	at org.h2.mvstore.MVMap.getFirstLast(MVMap.java:299)
+	at org.h2.mvstore.MVMap.getFirstLast(MVMap.java:288)
+	at org.h2.mvstore.MVMap.lastKey(MVMap.java:174)
+	at org.h2.mvstore.db.MVPrimaryIndex.<init>(MVPrimaryIndex.java:59)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:156)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	... 16 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.readInternal(FileChannelImpl.java:844)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:821)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	... 27 more
+2023-07-10 11:29:48 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.store.FileLock.getExceptionFatal(FileLock.java:429)
+	at org.h2.store.FileLock.sleep(FileLock.java:424)
+	at org.h2.store.FileLock.lockFile(FileLock.java:334)
+	at org.h2.store.FileLock.lock(FileLock.java:110)
+	at org.h2.engine.Database.<init>(Database.java:315)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:504)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 20 more
+Caused by: java.lang.InterruptedException: sleep interrupted
+	at java.base/java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock.sleep(FileLock.java:422)
+	... 17 more
+2023-07-10 11:44:34 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:185)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 17 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.size(FileChannelImpl.java:395)
+	at org.h2.mvstore.FileStore.open(FileStore.java:182)
+	... 19 more
+2023-07-10 11:44:34 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.<init>(Store.java:145)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 18 more
+Caused by: org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:185)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	... 15 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.size(FileChannelImpl.java:395)
+	at org.h2.mvstore.FileStore.open(FileStore.java:182)
+	... 19 more
+2023-07-10 11:44:41 database: CREATE CACHED TABLE "PUBLIC"."COMPONENT_CONFIG"(
+    "ID" CHARACTER VARYING(36) NOT NULL,
+    "COMPONENT_ID" CHARACTER VARYING(36) NOT NULL,
+    "NAME" CHARACTER VARYING(255) NOT NULL,
+    "VALUE" CHARACTER VARYING(4000)
+)
+org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db"; SQL statement:
+CREATE CACHED TABLE "PUBLIC"."COMPONENT_CONFIG"(
+    "ID" CHARACTER VARYING(36) NOT NULL,
+    "COMPONENT_ID" CHARACTER VARYING(36) NOT NULL,
+    "NAME" CHARACTER VARYING(255) NOT NULL,
+    "VALUE" CHARACTER VARYING(4000)
+) [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.createTable(Store.java:223)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:112)
+	at org.h2.engine.MetaRecord.prepareAndExecute(MetaRecord.java:77)
+	at org.h2.engine.Database.executeMeta(Database.java:660)
+	at org.h2.engine.Database.executeMeta(Database.java:634)
+	at org.h2.engine.Database.<init>(Database.java:357)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.mvstore.MVStoreException: Reading from file sun.nio.ch.FileChannelImpl@168a3b86 failed at 817843 (length -1), read 0, remaining 48 [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:470)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.Chunk.readBufferForPage(Chunk.java:422)
+	at org.h2.mvstore.MVStore.readPage(MVStore.java:2569)
+	at org.h2.mvstore.MVMap.readPage(MVMap.java:633)
+	at org.h2.mvstore.MVMap.readOrCreateRootPage(MVMap.java:658)
+	at org.h2.mvstore.MVMap.setRootPos(MVMap.java:643)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:702)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:648)
+	at org.h2.mvstore.tx.TransactionStore.openMap(TransactionStore.java:564)
+	at org.h2.mvstore.tx.TransactionStore.openVersionedMap(TransactionStore.java:550)
+	at org.h2.mvstore.tx.Transaction.openMap(Transaction.java:456)
+	at org.h2.mvstore.db.MVPrimaryIndex.<init>(MVPrimaryIndex.java:53)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:156)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	... 20 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.readInternal(FileChannelImpl.java:844)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:821)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	... 34 more
+2023-07-10 11:44:43 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.createTable(Store.java:223)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:112)
+	at org.h2.engine.MetaRecord.prepareAndExecute(MetaRecord.java:77)
+	at org.h2.engine.Database.executeMeta(Database.java:660)
+	at org.h2.engine.Database.executeMeta(Database.java:634)
+	at org.h2.engine.Database.<init>(Database.java:357)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db"; SQL statement:
+CREATE CACHED TABLE "PUBLIC"."COMPONENT_CONFIG"(
+    "ID" CHARACTER VARYING(36) NOT NULL,
+    "COMPONENT_ID" CHARACTER VARYING(36) NOT NULL,
+    "NAME" CHARACTER VARYING(255) NOT NULL,
+    "VALUE" CHARACTER VARYING(4000)
+) [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: Reading from file sun.nio.ch.FileChannelImpl@168a3b86 failed at 817843 (length -1), read 0, remaining 48 [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:470)
+	at org.h2.mvstore.FileStore.readFully(FileStore.java:98)
+	at org.h2.mvstore.Chunk.readBufferForPage(Chunk.java:422)
+	at org.h2.mvstore.MVStore.readPage(MVStore.java:2569)
+	at org.h2.mvstore.MVMap.readPage(MVMap.java:633)
+	at org.h2.mvstore.MVMap.readOrCreateRootPage(MVMap.java:658)
+	at org.h2.mvstore.MVMap.setRootPos(MVMap.java:643)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:702)
+	at org.h2.mvstore.MVStore.openMap(MVStore.java:648)
+	at org.h2.mvstore.tx.TransactionStore.openMap(TransactionStore.java:564)
+	at org.h2.mvstore.tx.TransactionStore.openVersionedMap(TransactionStore.java:550)
+	at org.h2.mvstore.tx.Transaction.openMap(Transaction.java:456)
+	at org.h2.mvstore.db.MVPrimaryIndex.<init>(MVPrimaryIndex.java:53)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:156)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	... 20 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.readInternal(FileChannelImpl.java:844)
+	at java.base/sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:821)
+	at org.h2.mvstore.DataUtils.readFully(DataUtils.java:456)
+	... 34 more
+2023-07-10 11:44:45 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.store.FileLock.getExceptionFatal(FileLock.java:429)
+	at org.h2.store.FileLock.sleep(FileLock.java:424)
+	at org.h2.store.FileLock.lockFile(FileLock.java:334)
+	at org.h2.store.FileLock.lock(FileLock.java:110)
+	at org.h2.engine.Database.<init>(Database.java:315)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:504)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 20 more
+Caused by: java.lang.InterruptedException: sleep interrupted
+	at java.base/java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock.sleep(FileLock.java:422)
+	... 17 more
+2023-07-10 11:44:53 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:185)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 17 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.size(FileChannelImpl.java:395)
+	at org.h2.mvstore.FileStore.open(FileStore.java:182)
+	... 19 more
+2023-07-10 11:44:54 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:171)
+	at org.h2.mvstore.db.Store.<init>(Store.java:145)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: IO Exception: "C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db" [90028-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 18 more
+Caused by: org.h2.mvstore.MVStoreException: Could not open file C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb.mv.db [2.1.214/1]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:185)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	... 15 more
+Caused by: java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.size(FileChannelImpl.java:395)
+	at org.h2.mvstore.FileStore.open(FileStore.java:182)
+	... 19 more
+2023-07-10 11:59:42 database: opening C:/Learning/Udemy/Spring/Eazybytes-Spring-Security/eazybank/keycloak-21.1.1/data/h2/keycloakdb
+org.h2.message.DbException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.store.FileLock.getExceptionFatal(FileLock.java:429)
+	at org.h2.store.FileLock.sleep(FileLock.java:424)
+	at org.h2.store.FileLock.lockFile(FileLock.java:334)
+	at org.h2.store.FileLock.lock(FileLock.java:110)
+	at org.h2.engine.Database.<init>(Database.java:315)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:536)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:517)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Error opening database: "Sleep interrupted" [8000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:504)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 20 more
+Caused by: java.lang.InterruptedException: sleep interrupted
+	at java.base/java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock.sleep(FileLock.java:422)
+	... 17 more
